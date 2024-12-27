@@ -11,10 +11,10 @@ import { Progress } from "./ui/progress";
 
 interface FreeCounterProps {
   apiLimitCount: number;
-  isPro: boolean;
+  proAccount: boolean;
 }
 
-export const FreeCounter: FC<FreeCounterProps> = ({ apiLimitCount = 0, isPro = false }) => {
+export const FreeCounter: FC<FreeCounterProps> = ({ apiLimitCount = 0, proAccount = false }) => {
   const [mounted, setMounted] = useState(false);
   const proModal = useProModal();
 
@@ -26,7 +26,7 @@ export const FreeCounter: FC<FreeCounterProps> = ({ apiLimitCount = 0, isPro = f
     return null;
   }
 
-  if (isPro) {
+  if (proAccount) {
     return null;
   }
 

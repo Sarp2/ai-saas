@@ -37,9 +37,9 @@ export async function POST(req: Request) {
     }
 
     const isAllowed = await checkApiLimit();
-    const isPro = await checkSubscription();
+    const proAccount = await checkSubscription();
 
-    if (!isAllowed && !isPro) {
+    if (!isAllowed && !proAccount) {
       return new NextResponse("API Limit Exceeded", { status: 403 });
     }
 
@@ -49,7 +49,7 @@ export async function POST(req: Request) {
       size: resolution,
     });
 
-    if (!isPro) {
+    if (!proAccount) {
       await increaseApiLimit();
     }
 
